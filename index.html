@@ -13,9 +13,9 @@
              <link href="https://fonts.googleapis.com/css?family=Martel+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="header">
+    <div id="header" contenteditable="true">
         <img src="mokacup.jpg" alt="Spilled Beans and void in shape of mug">
-        <div id="main">
+        <div id="main" class="containter">
             <h1 id="topleft">The<br>Perfect<br>Moka</h1>
             <h2 id="instruct"><img src="Moka-pot-with-parts.png" alt="Italian Moka Pot with labeled parts">Using the Italian Moka Pot</h2>
             <p class="steps">Step 1: Begin with a clean pot.</p>
@@ -38,8 +38,50 @@
         </div>
     </div>
     <footer><p>Any advice given is purely for informational purposes. The author of this is not a coffee drinker, so please use caution when proceeding.</p>
-        <p>This page was created for extra credit for INF 655 at FHSU by Amy Booker.</p>
+        <p>This page was created for extra credit for INF 655 at FHSU by <a href="mailto=fake@fakeemai.com" class="email">Amy Booker</a>.</p>
     </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      (function($) {
+        var color = "#ffffff";
+        $.fn.stylify = function(action) {
+          return this.each(function() {
+            switch (action) {
+              case "highlight":
+                highlight($(this), color);
+                break;
+              case "underline":
+                underline($(this));
+                break;
+              case "transform":
+                transform($(this), color);
+                break; 
+            }
+          });
+        };
+        function highlight(elem, color) {
+          elem.css("background-color", color);
+        }
+        function underline(elem) {
+          elem.css("text-decoration", "underline");
+        }
+        function transform(elem, color) {
+          elem.css("text-transform", "uppercase")
+        }
+        
+      })(jQuery);
+      color = "#ffffff"
+      $(".steps")
+        .stylify("underline");
+      $(".tips")  
+        .stylify("highlight");
+      $("a")
+        .stylify("transform"); 
+    </script>
 </body>
 
 </html>
